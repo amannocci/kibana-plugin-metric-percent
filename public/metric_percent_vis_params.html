@@ -1,4 +1,12 @@
 <div class="form-group">
-  <label>Font Size - {{ vis.params.fontSize }}pt</label>
-  <input type="range" ng-model="vis.params.fontSize" class="form-control" min="12" max="120" />
+  <label>Font Size Percent - {{ vis.params.fontSizePercent }}pt</label>
+  <input type="range" ng-model="vis.params.fontSizePercent" class="form-control" min="12" max="120" />
+</div>
+<div class="form-group">
+  <label>Font Size Count - {{ vis.params.fontSizeCount }}pt</label>
+  <input type="range" ng-model="vis.params.fontSizeCount" class="form-control" min="12" max="120" />
+</div>
+<div class="form-group">
+  <label>Display Count</label>
+  <input type="checkbox" ng-model="vis.params.displayCount" class="form-control" />
 </div>

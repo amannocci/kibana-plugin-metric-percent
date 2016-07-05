@@ -24,7 +24,9 @@ define(function (require) {
       params: {
         defaults: {
           handleNoResults: true,
-          fontSize: 60
+          fontSizePercent: 60,
+          fontSizeCount: 40,
+          displayCount: false
         },
         editor: require('plugins/metric_percent_vis/metric_percent_vis_params.html')
       },

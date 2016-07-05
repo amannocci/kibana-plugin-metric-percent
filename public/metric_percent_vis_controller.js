@@ -27,7 +27,8 @@ define(function (require) {
 
               metrics.push({
                 label: column,
-                value: ((value / base[1]) * 100).toFixed(2) + '%'
+                value: ((value / base[1]) * 100).toFixed(2) + '%',
+                count: value
               });
             }
           });
