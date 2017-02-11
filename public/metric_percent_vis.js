@@ -37,6 +37,7 @@ define(function (require) {
           title: 'Global',
           min: 1,
           max: 1,
+          aggFilter: ['count', 'cardinality'],
           defaults: [
             { type: 'count', schema: 'metric' }
           ]
