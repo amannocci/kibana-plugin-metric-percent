@@ -15,7 +15,7 @@ Different releases of the plugin are available to work with either Kibana 4 or K
 You can test this plugin within a kibana docker container
 ```bash
 #!/bin/bash
-VERSION="5.2.0"
+VERSION="5.2.1"
 git clone https://github.com/amannocci/kibana-plugin-metric-percent plugins/kibana-plugin-metric-percent
 docker run --name kibana-$VERSION --net=host -e ELASTICSEARCH_URL=http://localhost:9200 -v $PWD/plugins:/usr/share/kibana/plugins -d kibana:$VERSION --plugins /usr/share/kibana/plugins
 ```
