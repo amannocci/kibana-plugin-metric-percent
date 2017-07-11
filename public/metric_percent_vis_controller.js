@@ -1,8 +1,10 @@
+import { AggResponseTabifyProvider } from 'ui/agg_response/tabify/tabify';
+
 define(function (require) {
   var module = require('ui/modules').get('kibana/metric_percent_vis', ['kibana']);
 
   module.controller('KbnMetricPercentVisController', function ($scope, $element, Private) {
-    const tabifyAggResponse = Private(require('ui/agg_response/tabify/tabify'));
+    const tabifyAggResponse = Private(AggResponseTabifyProvider);
 
     const metrics = $scope.metrics = [];
 
