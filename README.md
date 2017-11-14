@@ -20,6 +20,18 @@ git clone https://github.com/amannocci/kibana-plugin-metric-percent plugins/kiba
 docker run --name kibana-$VERSION --net=host -e ELASTICSEARCH_URL=http://localhost:9200 -v $PWD/plugins:/usr/share/kibana/plugins -d kibana:$VERSION --plugins /usr/share/kibana/plugins
 ```
 
+## Installation
+```bash
+$ mkdir kibana
+$ cd kibana
+$ git clone https://github.com/amannocci/kibana-plugin-metric-percent.git
+$ cd ..
+$ zip -r kibana.zip kibana
+$ /{path to}/kibana-plugin install file:///{path to}/kibana.zip
+```
+You might need to change the kibana version in `package.json` according to your needs.
+
+
 ## Usage
 The first step in creating the visualization is to configure the metric that will be displayed.
 
