@@ -1,6 +1,6 @@
 {
   "name": "metric_percent_vis",
-  "version": "5.5.2",
+  "version": "5.5.3",
   "scripts": {
     "lint": "eslint",
     "start": "plugin-helpers start",
