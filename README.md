@@ -11,26 +11,30 @@ The visualization displays a percent number based on a global number and various
 ## Compatibility
 Different releases of the plugin are available to work with either Kibana 4 or Kibana 5.
 
-## Sandbox
+All supported versions are properly tagged on this repository.
+
+If this plugin isn't supported officially you can try to change the kibana version in `package.json` according to your needs.
+
+## Installation
+
+### For docker
 You can test this plugin within a kibana docker container
 ```bash
 #!/bin/bash
-VERSION="5.4.3"
+VERSION="5.5.1"
 git clone https://github.com/amannocci/kibana-plugin-metric-percent plugins/kibana-plugin-metric-percent
 docker run --name kibana-$VERSION --net=host -e ELASTICSEARCH_URL=http://localhost:9200 -v $PWD/plugins:/usr/share/kibana/plugins -d kibana:$VERSION --plugins /usr/share/kibana/plugins
 ```
 
-## Installation
-```bash
-$ mkdir kibana
-$ cd kibana
-$ git clone https://github.com/amannocci/kibana-plugin-metric-percent.git
-$ cd ..
-$ zip -r kibana.zip kibana
-$ /{path to}/kibana-plugin install file:///{path to}/kibana.zip
-```
-You might need to change the kibana version in `package.json` according to your needs.
+### For others
+A script is provided to install this plugin properly.
 
+It will download the right version of this plugin based on kibana version and create a zip compatible with kibana plugin manager in current directory.
+
+It will also try to install it if needed.
+```bash
+bash <(curl -Ss https://raw.githubusercontent.com/amannocci/kibana-plugin-metric-percent/master/scripts/setup-plugin.sh)
+```
 
 ## Usage
 The first step in creating the visualization is to configure the metric that will be displayed.

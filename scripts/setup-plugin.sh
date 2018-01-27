@@ -18,12 +18,6 @@ function is_install {
   fi
 }
 
-# Correct path
-info "Correcting working directory"
-cd "$(dirname "$0")"
-BASE_DIR=$PWD
-BASE_PROJECT=$(dirname "$BASE_DIR")
-
 # Check dependencies
 is_install "git"
 is_install "zip"
@@ -41,7 +35,7 @@ VERSION=${VERSION:-master}
 
 # Clone plugin
 info "Cloning plugin in current directory"
-git clone $URL
+git clone $URL /tmp/kibana-plugin-metric-percent
 if [ $? -ne 0 ]; then
   error "The repository can't be used"
   exit 1
@@ -50,6 +44,7 @@ else
 fi
 
 if [ "$VERSION" != "master" ]; then
+  cd /tmp/kibana-plugin-metric-percent
   git checkout tags/$VERSION
 
   if [ $? -ne 0 ]; then
@@ -59,17 +54,18 @@ if [ "$VERSION" != "master" ]; then
     info "Checkout to the right version of plugin for Kibana $VERSION"
   fi
 fi
+cd /tmp
 
 # Repacking plugin
 info "Repacking plugin..."
-mkdir -p ./kibana/metric_percent_vis
-mv ./kibana-plugin-metric-percent/* ./kibana/metric_percent_vis/
-zip -r metric_percent_vis.zip kibana
+mkdir -p /tmp/kibana/metric_percent_vis
+mv ./kibana-plugin-metric-percent/* /tmp/kibana/metric_percent_vis/
+zip -r metric_percent_vis.zip /tmp/kibana
 
 # Cleanup
 info "Cleanup..."
-rm -rf ./kibana-plugin-metric-percent
-rm -rf ./kibana
+rm -rf /tmp/kibana-plugin-metric-percent
+rm -rf /tmp/kibana
 
 # If detected
 if [ -x "$(command -v kibana-plugin)" ]; then
@@ -77,6 +73,6 @@ if [ -x "$(command -v kibana-plugin)" ]; then
   info "Do you want to install plugin ? [y/n] (default: n)"
   read -p "> " ANSWER
   if [ "$ANSWER" == "y" ]; then
-    kibana-plugin install file:///$PWD/metric_percent_vis.zip
+    kibana-plugin install file://$PWD/metric_percent_vis.zip
   fi 
 fi
