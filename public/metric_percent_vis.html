@@ -1,7 +1,0 @@
-<div ng-controller="KbnMetricPercentVisController" class="metric-vis">
-  <div class="metric-container" ng-repeat="metric in metrics">
-      <div class="metric-value" ng-style="{'font-size': vis.params.fontSizePercent+'pt'}">{{metric.value}}</div>
-      <div class="metric-value" ng-style="{'font-size': vis.params.fontSizeCount+'pt'}" ng-if="vis.params.displayCount">{{metric.count}}</div>
-      <div>{{metric.label}}</div>
-  </div>
-</div>

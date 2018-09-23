@@ -1,5 +1,5 @@
 # Percent visualization for Kibana
-A percent visualization for Kibana, with builds available for both Kibana 4.6.x and Kibana 5.x.x.
+A percent visualization for Kibana, with builds available for both Kibana 4.6.x, Kibana 5.x.x and Kibana 6.x.x.
 
 The visualization displays a percent number based on a global number and various values.
 * [Source](https://github.com/amannocci/kibana-plugin-metric-percent)
@@ -9,7 +9,7 @@ The visualization displays a percent number based on a global number and various
 ![image](resources/overview.png)
 
 ## Compatibility
-Different releases of the plugin are available to work with either Kibana 4 or Kibana 5.
+Different releases of the plugin are available to work with either Kibana 4 or Kibana 5 or Kibana 6.
 
 All supported versions are properly tagged on this repository.
 
@@ -21,9 +21,9 @@ If this plugin isn't supported officially you can try to change the kibana versi
 You can test this plugin within a kibana docker container
 ```bash
 #!/bin/bash
-VERSION="5.5.3"
+VERSION="6.4.2"
 git clone https://github.com/amannocci/kibana-plugin-metric-percent plugins/kibana-plugin-metric-percent
-docker run --name kibana-$VERSION --net=host -e ELASTICSEARCH_URL=http://localhost:9200 -v $PWD/plugins:/usr/share/kibana/plugins -d kibana:$VERSION --plugins /usr/share/kibana/plugins
+docker run -it -d --net=host -e "ELASTICSEARCH_URL=http://localhost:9200" --name kibana-$VERSION -v $PWD/plugins:/usr/share/kibana/plugins docker.elastic.co/kibana/kibana:$VERSION
 ```
 
 ### For others
