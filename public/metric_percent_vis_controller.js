@@ -149,8 +149,14 @@ export class MetricPercentVisComponent extends Component {
     if (!metric.filterKey || !metric.bucketAgg) {
       return;
     }
-    const table = this.props.visData.tables[metric.tableIndex];
-    this.props.vis.API.events.addFilter(table, metric.columnIndex, metric.rowIndex);
+
+    if (typeof this.props.vis.API.events.addFilter === "function") {
+      const table = this.props.visData.tables[metric.tableIndex];
+      this.props.vis.API.events.addFilter(table, metric.columnIndex, metric.rowIndex);
+    } else {
+      const filter = metric.bucketAgg.createFilter(metric.filterKey);
+      this.props.vis.API.queryFilter.addFilters(filter);
+    }
   };
 
   _renderMetric = (metric, index) => {
